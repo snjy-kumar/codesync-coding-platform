@@ -33,7 +33,7 @@ Ensure you have the following installed:
 ### Steps to Run Locally
 1. **Clone the Repository**
    ```sh
-   git clone https://github.com/snjy-kumar/codesync.git
+   git clone https://github.com/snjy-kumar/codesync-code-editor.git
    cd codesync
    ```
 2. **Setup Backend**
