@@ -15,9 +15,7 @@ function SettingsView() {
         fontSize,
         setFontSize,
         fontFamily,
-        setFontFamily,
-        showGitHubCorner,
-        setShowGitHubCorner,
+        setFontFamily, 
         resetSettings,
     } = useSettings()
     const { viewHeight } = useResponsive()
@@ -30,8 +28,7 @@ function SettingsView() {
         setLanguage(e.target.value)
     const handleFontSizeChange = (e: ChangeEvent<HTMLSelectElement>) =>
         setFontSize(parseInt(e.target.value))
-    const handleShowGitHubCornerChange = (e: ChangeEvent<HTMLInputElement>) =>
-        setShowGitHubCorner(e.target.checked)
+    
 
     useEffect(() => {
         // Set editor font family

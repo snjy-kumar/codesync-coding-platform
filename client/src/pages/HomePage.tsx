@@ -104,7 +104,7 @@ function HomePage() {
             {/* </div>  */} 
             
             {/* CSS for animations */}
-            <style jsx>{`
+            <style>{`
                 @keyframes float {
                     0% {
                         transform: translate(0px, 0px) rotate(0deg);

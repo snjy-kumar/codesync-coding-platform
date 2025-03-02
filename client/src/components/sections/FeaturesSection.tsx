@@ -1,5 +1,5 @@
 
-import React, { useRef, useEffect } from "react";
+import   { useRef, useEffect } from "react";
 import { Code, Users, MessageSquare, FileText, Lock, Zap } from "lucide-react";
 
 const features = [
