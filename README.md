@@ -51,6 +51,15 @@ Ensure you have the following installed:
 4. **Access the Application**
    Open `http://localhost:5173` in your browser.
 
+## Working of the Platform
+<!-- Integrate video -->
+The platform allows multiple users to collaborate on a single codebase in real-time. Here's a brief overview of the working:
+
+[Watch the video](https://www.youtube.com/watch?v=VUPAfBxv6zo&ab_channel=SanjayKumarThakur)
+   
+![Demo GIF](/client/public/ss/demo.gif)
+
+
 ## Screenshots
 Here are some preview images showcasing the platform:
 

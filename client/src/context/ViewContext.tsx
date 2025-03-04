@@ -8,7 +8,7 @@ import { VIEWS, ViewContext as ViewContextType } from "@/types/view"
 import { ReactNode, createContext, useContext, useState } from "react"
 import { IoSettingsOutline } from "react-icons/io5"
 import { LuFiles } from "react-icons/lu"
-import { PiChats, PiPlay, PiUsers } from "react-icons/pi"
+import { PiChats, PiPlay, PiUsers  } from "react-icons/pi"
 
 const ViewContext = createContext<ViewContextType | null>(null)
 
@@ -30,13 +30,14 @@ function ViewContextProvider({ children }: { children: ReactNode }) {
         [VIEWS.SETTINGS]: <SettingsView />,
         [VIEWS.CHATS]: <ChatsView />,
         [VIEWS.RUN]: <RunView />,
+         
     })
     const [viewIcons] = useState({
         [VIEWS.FILES]: <LuFiles size={28} />,
         [VIEWS.CLIENTS]: <PiUsers size={30} />,
         [VIEWS.SETTINGS]: <IoSettingsOutline size={28} />,
         [VIEWS.CHATS]: <PiChats size={30} />,
-        [VIEWS.RUN]: <PiPlay size={28} />,
+        [VIEWS.RUN]: <PiPlay size={28} />, 
     })
 
     return (
