@@ -1,9 +1,13 @@
 import { useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Code, Users, GitBranch } from "lucide-react"
+import { SignInButton, useUser } from "@clerk/clerk-react"
+import { useNavigate } from "react-router-dom"
 
 const HeroSection = () => {
     const elementsRef = useRef<(HTMLDivElement | null)[]>([])
+    const { isSignedIn } = useUser();
+  const navigate = useNavigate();
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -52,17 +56,30 @@ const HeroSection = () => {
                                 build together like never before.
                             </p>
                             <div className="flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
-                               <a href="/join"> <Button size="lg" className="group">
-                                    Start Coding{" "}
-                                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                                </Button></a>
-                                <a href="/join"><Button
-                                    size="lg"
-                                    variant="secondary"
-                                    className="border-primary/20"
-                                >
-                                    Learn More
-                                </Button></a>
+                                {/* <a href="/join"> */}
+                                    {" "}
+                                    {isSignedIn ? (
+                                    <Button onClick={() => navigate("/dashboard")} size="lg" className="group">
+                                        Start Coding{" "}
+                                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                    </Button>
+                                    ) : (
+                                    <Button size="lg" className="group">
+                                         <SignInButton />{" "}
+                                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                    </Button>
+                                       
+                        )}
+                                {/* </a> */}
+                                <a href="/">
+                                    <Button
+                                        size="lg"
+                                        variant="secondary"
+                                        className="border-primary/20"
+                                    >
+                                        Learn More
+                                    </Button>
+                                </a>
                             </div>
                         </div>
 

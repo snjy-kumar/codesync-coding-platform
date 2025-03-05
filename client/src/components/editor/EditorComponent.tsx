@@ -3,8 +3,6 @@ import useResponsive from "@/hooks/useResponsive"
 import cn from "classnames"
 import Editor from "./Editor"
 import FileTab from "./FileTab"
-import VideoCall from "../sidebar/sidebar-views/VideoCall"
-import Draggable from "react-draggable"
 
 function EditorComponent() {
     const { openFiles } = useFileSystem()
@@ -29,13 +27,6 @@ function EditorComponent() {
         >
             <FileTab />
             <Editor />
-            <Draggable>
-                <div className="absolute bg-dark border-t border-darkHover text-white w-[200px] h-[200px]">
-                    <div className="flex flex-col items-center justify-center h-full w-full">
-                        <VideoCall />
-                    </div>
-                </div>
-            </Draggable>
         </main>
     )
 }

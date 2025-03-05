@@ -1,10 +1,42 @@
-
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 const NewsletterSection = () => {
+  const [name, setName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [error, setError] = useState<string>('');
+  const [success, setSuccess] = useState<string | null>(null); // Success state
   const elementsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  const formHandler = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Validate the email and name inputs
+    if (!name || !email) {
+      setError('Name and email are required.');
+      return;
+    }
+
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+
+    // Simulate a successful subscription (e.g., API call)
+    console.log(`Newsletter subscription submitted with name: ${name}, email: ${email}`);
+
+    // Show success message
+    setSuccess('Thank you for subscribing!');
+
+    // Clear the form
+    setName('');
+    setEmail('');
+    setError('');
+
+    // Optionally, hide the success message after a few seconds
+    setTimeout(() => setSuccess(null), 5000);
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,12 +60,6 @@ const NewsletterSection = () => {
       });
     };
   }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle newsletter subscription logic here
-    console.log("Newsletter subscription submitted");
-  };
 
   return (
     <section id="contact" className="py-20">
@@ -105,7 +131,7 @@ const NewsletterSection = () => {
                 </ul>
               </div>
               <div className="p-8 flex items-center">
-                <form onSubmit={handleSubmit} className="w-full">
+                <form onSubmit={formHandler} className="w-full">
                   <h3 className="text-xl font-medium mb-4">
                     Join our newsletter
                   </h3>
@@ -121,6 +147,8 @@ const NewsletterSection = () => {
                         id="name"
                         placeholder="Enter your name"
                         className="w-full"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                       />
                     </div>
                     <div>
@@ -136,8 +164,16 @@ const NewsletterSection = () => {
                         placeholder="Enter your email"
                         className="w-full"
                         required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                       />
                     </div>
+                    {error && (
+                      <p className="text-xs text-red-500 text-center mt-2">{error}</p>
+                    )}
+                    {success && (
+                      <p className="text-xs text-green-500 text-center mt-2">{success}</p>
+                    )}
                     <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
                       Subscribe
                     </Button>
